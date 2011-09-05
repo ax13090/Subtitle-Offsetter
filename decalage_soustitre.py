@@ -65,6 +65,7 @@ def calculer_coefficients(x0, y0, x1, y1):
 	b = y0 - (a * x0)
 	return (a, b)
 
+
 def appliquer_coefficients(a,b,x):
 	return int(a * float(x) + b)
 
@@ -75,14 +76,12 @@ t1         = lire_temps(t1_str)
 t1_nouveau = lire_temps(t1_nouveau_str)
 
 (a, b) = calculer_coefficients(t0, t0_nouveau, t1, t1_nouveau) 
-#print (a,b)
 
 
 elements = []
 element = None
 for ligne_brute in sys.stdin:
 	ligne = ligne_brute.strip()
-	#print "longueur liste : ", len(elements)
 	
 	match_numero = re.search('^\d+$', ligne)
 	if match_numero is not None:
@@ -93,7 +92,6 @@ for ligne_brute in sys.stdin:
 	
 	match_temps = re.search('^(\d{2}):(\d{2}):(\d{2}),(\d{3})\s+-->\s+(\d{2}):(\d{2}):(\d{2}),(\d{3})$', ligne)
 	if match_temps is not None:
-		#print match_temps.group(0)
 		element.debut = ms(int(match_temps.group(1)), int(match_temps.group(2)), int(match_temps.group(3)), int(match_temps.group(4)))
 		element.fin   = ms(int(match_temps.group(5)), int(match_temps.group(6)), int(match_temps.group(7)), int(match_temps.group(8)))
 		continue
