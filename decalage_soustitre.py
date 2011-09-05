@@ -105,6 +105,10 @@ def calculer_coefficients(x0, y0, x1, y1):
 
 
 def appliquer_coefficients(a,b,x):
+	'''
+	Applique à un argument x la fonction affine f: z-> a*z+b 
+	Retourne le résulat
+	'''
 	return int(a * float(x) + b)
 
 
