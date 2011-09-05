@@ -1,4 +1,13 @@
 #!/usr/bin/env python -O
+'''
+Ce script pour Python s'utilise avec des fichiers de sous-titre au format SRT
+Il faut lui fournir en argument quatre temps, avec la syntaxe des sous-titres SRT (01:23:45,678), qui 
+correspondent a quatre temps (T0, T0_nouveau, T1, T1_nouveau).
+Sur l'entrée standard, le fichier SRT à transformer
+La sortie standard, si tout se passe bien, sera identique à l'entree, mais sur tous les temps aura
+ete appliquee une fonction affine. 
+T0 deviendra T0_nouveau, et T1 deviendra T1_nouveau.
+'''
 
 import sys
 import re
