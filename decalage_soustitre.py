@@ -1,4 +1,5 @@
 #!/usr/bin/env python -O
+# -*- coding: utf-8 -*-
 
 '''
 Ce script pour Python s'utilise avec des fichiers de sous-titre au format SRT
