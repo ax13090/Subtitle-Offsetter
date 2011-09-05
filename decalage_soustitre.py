@@ -58,6 +58,13 @@ def format(ms):
 
 
 def lire_temps(chaine):
+	'''
+	Lire un temps depuis la chaine passée en paramètre
+	Le temps est recherché selon la forme 01:23:45,678
+	De nombreuses variantes de cette forme sont acceptées
+
+	La fonction renvoie une date en millisecondes
+	'''
 	matches = re.findall('(?<!\d)\d{1,3}(?!\d)', chaine)
 	if (len(matches) < 4):
 		print chaine, " : format incorrect"
