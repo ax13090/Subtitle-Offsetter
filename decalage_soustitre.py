@@ -115,5 +115,9 @@ def main():
 			print ligne_de_texte
 		print;
 
+'''
+Si ce script est lancé par l'interpréteur, et non inclus en tant que module, 
+on exécute la fonction main()
+'''
 if __name__ == '__main__':
 	main()
