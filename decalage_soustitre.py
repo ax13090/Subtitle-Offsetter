@@ -1,4 +1,5 @@
 #!/usr/bin/env python -O
+
 '''
 Ce script pour Python s'utilise avec des fichiers de sous-titre au format SRT
 Il faut lui fournir en argument quatre temps, avec la syntaxe des sous-titres SRT (01:23:45,678), qui 
@@ -32,7 +33,12 @@ class Element:
 
 
 def ms(heures, minutes, secondes, millisecondes):
+	'''
+	Convertit une date en heures + minutes + secondes + millisecondes
+	en une date en millisecondes uniquement
+	'''
 	return millisecondes + (secondes * 1000) + (minutes * 60 * 1000) + (heures * 60 * 60 * 1000)
+
 
 def format(ms):
 	heures = ms / (60 * 60 * 1000);
