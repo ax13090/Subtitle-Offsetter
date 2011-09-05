@@ -79,6 +79,26 @@ def lire_temps(chaine):
 					
 
 def calculer_coefficients(x0, y0, x1, y1):
+	'''
+	A partir de deux points (x0,y0) et (x1,y1) calculer les coefficients a et b tels que :
+	
+	y0 = a*x0 + b
+	ET
+	y1 = a*x1 + b
+
+
+        |                      y = ax+b   +
+        |                              +
+      y1|---------------------------+ 
+        |                        +  |`
+        |          (x0,y0)    +     | `
+        |              `   +        |(x1,y1)
+      y0|---------------+           | 
+        |            +  |           |
+        |         +     |           |
+	+-----------------------------------------------
+	                x0         x1
+	'''
 	a = float(y1 - y0) / float(x1 - x0)
 	b = y0 - (a * x0)
 	return (a, b)
