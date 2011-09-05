@@ -12,6 +12,8 @@ T0 deviendra T0_nouveau, et T1 deviendra T1_nouveau.
 import sys
 import re
 
+
+
 class Element:
 	'''
 	Classe utilisée pour représenter un élément de sous titre.
@@ -26,6 +28,8 @@ class Element:
 		self.debut = None
 		self.fin = None
 		self.numero = num
+
+
 
 def ms(heures, minutes, secondes, millisecondes):
 	return millisecondes + (secondes * 1000) + (minutes * 60 * 1000) + (heures * 60 * 60 * 1000)
