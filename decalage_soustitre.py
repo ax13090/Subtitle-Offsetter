@@ -13,6 +13,14 @@ import sys
 import re
 
 class Element:
+	'''
+	Classe utilisée pour représenter un élément de sous titre.
+	Dans ce programme, un élément de sous titre est constitué de : 
+	- un numéro, (pareil que dans un fichier SRT)
+	- une date de début d'affichage
+	- une date de fin d'affichage
+	- une ou plusieurs lignes de texte
+	'''
 	def __init__(self, num):
 		self.texte = []
 		self.debut = None
