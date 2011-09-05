@@ -89,7 +89,14 @@ def appliquer_coefficients(a,b,x):
 
 
 def main():
-	
+	'''
+	Fonction principale. 
+	Lit les arguments depuis la ligne de commande : 4 dates
+	Calcule les coefficients
+	Parcourt toutes les lignes du fichier d'entrée pour créer une listes d'objets Element
+	Applique les transformations sur tous les temps de toutes les entrées, et affiche les
+	entrées transformées sur la sortie standard
+	'''
 	(t0_str, t0_nouveau_str, t1_str, t1_nouveau_str) = sys.argv[1:5]
 	t0         = lire_temps(t0_str)
 	t0_nouveau = lire_temps(t0_nouveau_str)
