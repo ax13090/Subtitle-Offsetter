@@ -42,6 +42,10 @@ def ms(heures, minutes, secondes, millisecondes):
 
 
 def format(ms):
+	'''
+	Calcule et renvoie une chaîne de caractères formatée à partir d'une date en millisecondes
+	La chaîne renvoyée sera du type : 01:23:45,678
+	'''
 	heures = ms / (60 * 60 * 1000);
 	ms = ms - heures * 60 * 60 * 1000;
 	
