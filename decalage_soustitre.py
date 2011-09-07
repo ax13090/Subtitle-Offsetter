@@ -121,39 +121,69 @@ def main():
 	Applique les transformations sur tous les temps de toutes les entrées, et affiche les
 	entrées transformées sur la sortie standard
 	'''
+
+	# Récupération des arguments de la ligne de commande : quatre 
+	# temps (T0, T0', T1, T1') 
 	(t0_str, t0_nouveau_str, t1_str, t1_nouveau_str) = sys.argv[1:5]
 	t0         = lire_temps(t0_str)
 	t0_nouveau = lire_temps(t0_nouveau_str)
 	t1         = lire_temps(t1_str)
 	t1_nouveau = lire_temps(t1_nouveau_str)
 
+	# Calcul des coefficients de la transformation affine à appliquer
 	(a, b) = calculer_coefficients(t0, t0_nouveau, t1, t1_nouveau) 
 
+	# Parcours du texte, fourni sur l'entrée standard du programme
+	# On produit une liste d'Elements de sous-titre
 	elements = []
+
+	# Cette variable contient une référence vers l'élément en cours de création.
+	# Elle est remplacée dès qu'un nouvel élément est trouvé
 	element = None
+	
 	for ligne_brute in sys.stdin:
+
+		# Suppression des blancs en début et en fin de chaîne	
 		ligne = ligne_brute.strip()
 		
+		# La ligne est peut-être constituée d'un numéro
 		match_numero = re.search('^\d+$', ligne)
 		if match_numero is not None:
+
+			# Dans ce cas, on crée un nouvel élément dans la liste, marqué avec ce numéro
 			numero = int(match_numero.group(0)) 
 			element = Element(numero)
 			elements.append(element)
+			
+			# On peut passer à la ligne suivante
 			continue
 		
+
+		# Sinon, la ligne est peut-être formée de deux temps de sous-titre, séparés par une flèche
 		match_temps = re.search('^(\d{2}):(\d{2}):(\d{2}),(\d{3})\s+-->\s+(\d{2}):(\d{2}):(\d{2}),(\d{3})$', ligne)
 		if match_temps is not None:
+			# Dans ce cas, on modifie le dernier élément qui a été instancié, et on affecte
+			# ses attributs  *debut* et *fin*  avec les valeurs qui ont été trouvées
 			element.debut = ms(int(match_temps.group(1)), int(match_temps.group(2)), int(match_temps.group(3)), int(match_temps.group(4)))
 			element.fin   = ms(int(match_temps.group(5)), int(match_temps.group(6)), int(match_temps.group(7)), int(match_temps.group(8)))
+
+			# Après ça on peut passer à la ligne suivante
 			continue
 		
+
+		# Sinon, la ligne est peut-être une ligne vide
 		match_ligne_vide = re.search('^\s*$', ligne)
 		if match_ligne_vide is not None:
-			#print "Ligne vide au numero", numero, ": ", ligne
+
+			# Dans ce cas on ne fait rien et on passe à la ligne suivante
 			continue
 		
+		# Enfin, si la ligne courante n'est ni un numéro, ni un temps, ni une ligne vide, alors il 
+		# doit s'agir d'une ligne de texte.
+		# On ajoute donc ce texte à l'élément en cours de création
 		element.texte.append(ligne)
 
+	# L'entrée standard est terminée, tous les éléments ont été créés.
 
 	for element in elements:
 		print element.numero
