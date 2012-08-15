@@ -124,11 +124,8 @@ def main():
 
 	# Récupération des arguments de la ligne de commande : quatre 
 	# temps (T0, T0', T1, T1') 
-	(t0_str, t0_nouveau_str, t1_str, t1_nouveau_str) = sys.argv[1:5]
-	t0         = lire_temps(t0_str)
-	t0_nouveau = lire_temps(t0_nouveau_str)
-	t1         = lire_temps(t1_str)
-	t1_nouveau = lire_temps(t1_nouveau_str)
+
+	(t0, t0_nouveau, t1, t1_nouveau) = [lire_temps(temps) for temps in sys.argv[1:5]]
 
 	# Calcul des coefficients de la transformation affine à appliquer
 	(a, b) = calculer_coefficients(t0, t0_nouveau, t1, t1_nouveau) 
