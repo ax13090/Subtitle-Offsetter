@@ -161,8 +161,8 @@ def main():
 		if match_temps is not None:
 			# Dans ce cas, on modifie le dernier élément qui a été instancié, et on affecte
 			# ses attributs  *debut* et *fin*  avec les valeurs qui ont été trouvées
-			element.debut = ms(int(match_temps.group(1)), int(match_temps.group(2)), int(match_temps.group(3)), int(match_temps.group(4)))
-			element.fin   = ms(int(match_temps.group(5)), int(match_temps.group(6)), int(match_temps.group(7)), int(match_temps.group(8)))
+			element.debut = ms(*[int(match_temps.group(i)) for i in range(1, 5)])
+			element.fin   = ms(*[int(match_temps.group(i)) for i in range(5, 9)])
 
 			# Après ça on peut passer à la ligne suivante
 			continue
