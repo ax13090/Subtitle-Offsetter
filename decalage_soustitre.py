@@ -70,11 +70,7 @@ def lire_temps(chaine):
 		print chaine, " : format incorrect"
 		exit(1)
 	else:
-		return ms(
-					int(matches[0]), 
-					int(matches[1]), 
-					int(matches[2]), 
-					int(matches[3]))
+		return ms( * map(int, matches) )
 					
 
 def calculer_coefficients(x0, y0, x1, y1):
