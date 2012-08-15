@@ -70,7 +70,6 @@ def lire_temps(chaine):
 		print chaine, " : format incorrect"
 		exit(1)
 	else:
-		#print matches
 		return ms(
 					int(matches[0]), 
 					int(matches[1]), 
@@ -184,7 +183,6 @@ def main():
 
 	for element in elements:
 		print element.numero
-		#print str(element.debut)  + " --> " + str(element.fin)
 		print format(appliquer_coefficients(a, b, element.debut))  + " --> " + format(appliquer_coefficients(a, b, element.fin))
 
 		for ligne_de_texte in element.texte:
